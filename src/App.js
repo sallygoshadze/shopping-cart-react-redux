@@ -1,15 +1,17 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import Cart from './components/Cart';
-import cartItems from './data';
+import data from './data';
 import './App.css';
+import { Provider } from 'react-redux';
+import { store } from './store/store';
 
 function App() {
   return (
-    <div>
+    <Provider store={store}>
       <Navbar />
-      <Cart cart={cartItems} />
-    </div>
+      <Cart />
+    </Provider>
   );
 }
 

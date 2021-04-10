@@ -1,14 +1,19 @@
 import React from 'react';
 import { FiShoppingBag } from 'react-icons/fi';
+import { connect } from 'react-redux';
 
-const Navbar = () => {
+const Navbar = ({ amount }) => {
   return (
     <div>
       <h3>desserts</h3>
       <FiShoppingBag />
-      <sup>0</sup>
+      <sup>{amount}</sup>
     </div>
   );
 };
 
-export default Navbar;
+const mapStateToProps = (state) => {
+  return { amount: state.amount };
+};
+
+export default connect(mapStateToProps)(Navbar);

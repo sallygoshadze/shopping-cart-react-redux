@@ -1,7 +1,9 @@
 import React from 'react';
 import Item from './Item';
+import { connect } from 'react-redux';
+import { CLEAR } from '../store/actions';
 
-const Cart = ({ cart = [] }) => {
+const Cart = ({ cart = [], total, dispatch }) => {
   if (cart.length === 0) {
     return (
       <div>
@@ -19,11 +21,15 @@ const Cart = ({ cart = [] }) => {
         })}
       </div>
       <div>
-        total <span>$0.00</span>
+        total <span>${total}</span>
       </div>
-      <button>clear</button>
+      <button onClick={() => dispatch({ type: CLEAR })}>clear</button>
     </div>
   );
 };
 
-export default Cart;
+const mapStateToProps = (state) => {
+  return { cart: state.cart, total: state.total };
+};
+
+export default connect(mapStateToProps)(Cart);
