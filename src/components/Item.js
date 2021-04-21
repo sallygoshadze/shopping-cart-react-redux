@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import { INCREASE, DECREASE, REMOVE } from "../store/actions";
+import { REMOVE, TOGGLE_AMOUNT } from "../store/actions";
 import { BsChevronUp, BsChevronDown } from "react-icons/bs";
 
-const Item = ({ img, title, price, amount, remove, increase, decrease }) => {
+const Item = ({ img, title, price, amount, remove, toggle }) => {
   return (
     <div>
       <img src={img} alt={title} />
@@ -13,11 +13,19 @@ const Item = ({ img, title, price, amount, remove, increase, decrease }) => {
         <button onClick={() => remove()}>remove</button>
       </div>
       <div>
-        <button onClick={() => increase()}>
+        <button onClick={() => toggle("inc")}>
           <BsChevronUp />
         </button>
         <p>{amount}</p>
-        <button onClick={() => decrease()}>
+        <button
+          onClick={() => {
+            if (amount === 1) {
+              return remove();
+            } else {
+              return toggle("dec");
+            }
+          }}
+        >
           <BsChevronDown />
         </button>
       </div>
@@ -26,11 +34,13 @@ const Item = ({ img, title, price, amount, remove, increase, decrease }) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  const { id, amount } = ownProps;
+  const { id } = ownProps;
   return {
     remove: () => dispatch({ type: REMOVE, payload: { id } }),
-    increase: () => dispatch({ type: INCREASE, payload: { id } }),
-    decrease: () => dispatch({ type: DECREASE, payload: { id, amount } }),
+    // increase: () => dispatch({ type: INCREASE, payload: { id } }),
+    // decrease: () => dispatch({ type: DECREASE, payload: { id, amount } }),
+    toggle: (toggle) =>
+      dispatch({ type: TOGGLE_AMOUNT, payload: { id, toggle } }),
   };
 };
 

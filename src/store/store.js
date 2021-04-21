@@ -1,11 +1,14 @@
-import { createStore } from 'redux';
-import reducer from './reducer';
-import data from '../data';
+import { createStore } from "redux";
+import reducer from "./reducer";
+import data from "../data";
 
 export const initialStore = {
   cart: data,
-  total: 110,
-  amount: 5,
+  total: 0,
+  amount: 0,
 };
 
-export const store = createStore(reducer, initialStore);
+export const store = createStore(
+  reducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
