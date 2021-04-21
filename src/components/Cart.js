@@ -1,9 +1,12 @@
-import React from 'react';
-import Item from './Item';
-import { connect } from 'react-redux';
-import { CLEAR } from '../store/actions';
+import React, { useEffect } from "react";
+import Item from "./Item";
+import { connect } from "react-redux";
+import { CLEAR, GET_TOTALS } from "../store/actions";
 
 const Cart = ({ cart = [], total, dispatch }) => {
+  useEffect(() => {
+    dispatch({ type: GET_TOTALS });
+  });
   if (cart.length === 0) {
     return (
       <div>
