@@ -1,4 +1,35 @@
+@import "antd/dist/antd.css";
+
 img {
-  width: 100px;
+  width: 150px;
   height: auto;
+}
+
+.site-page-header {
+  border: 1px solid rgb(235, 237, 240);
+  display: flex;
+  justify-content: center;
+  letter-spacing: 0.2rem;
+  background-color: #999;
+  padding: 0.5rem 0;
+}
+
+.cart-header {
+  display: flex;
+  justify-content: center;
+  letter-spacing: 0.2rem;
+  margin-top: 0.5rem;
+}
+
+.cart {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 20px;
+  margin-top: -40px;
+}
+
+.total {
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
 }

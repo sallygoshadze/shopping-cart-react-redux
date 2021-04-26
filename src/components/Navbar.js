@@ -1,14 +1,24 @@
-import React from 'react';
-import { FiShoppingBag } from 'react-icons/fi';
-import { connect } from 'react-redux';
+import React from "react";
+import { ShoppingOutlined } from "@ant-design/icons";
+import { connect } from "react-redux";
+import { PageHeader, Badge } from "antd";
 
 const Navbar = ({ amount }) => {
   return (
-    <div>
-      <h3>desserts</h3>
-      <FiShoppingBag />
-      <sup>{amount}</sup>
-    </div>
+    <>
+      <PageHeader className="site-page-header" title="Desserts" />
+      <div className="cart">
+        <Badge count={amount} size="default">
+          <ShoppingOutlined
+            style={{
+              fontSize: "1.7rem",
+              display: "flex",
+              justifyContent: "flex-end",
+            }}
+          />
+        </Badge>
+      </div>
+    </>
   );
 };
 
